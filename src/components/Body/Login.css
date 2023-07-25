@@ -1,0 +1,59 @@
+.ReactModal__Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ReactModal__Content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .ReactModal__Content h2 {
+    margin-top: 0;
+  }
+  
+  .ReactModal__Content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .ReactModal__Content label {
+    font-weight: bold;
+  }
+  
+  .ReactModal__Content input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .ReactModal__Content button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ReactModal__Content button:first-child {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .ReactModal__Content button:last-child {
+    background-color: #ccc;
+    margin-top: 10px;
+  }
+  
