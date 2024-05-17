@@ -1,0 +1,57 @@
+/* Estilos para la superposición del modal de alerta de inicio de sesión */
+.login-alert-modal-overlay {
+  /* Fondo semitransparente negro para oscurecer el contenido detrás del modal */
+  background-color: rgba(0, 0, 0, 0.75);
+  /* Utiliza flexbox para centrar el contenido del modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para el contenido del modal de alerta de inicio de sesión */
+.login-alert-modal-content {
+  /* Posicionamiento relativo para ajustes internos */
+  position: relative;
+  /* Fondo blanco para el contenido del modal */
+  background: white;
+  /* Espaciado interno alrededor del contenido */
+  padding: 20px;
+  /* Ancho máximo del modal para mantenerlo responsivo */
+  max-width: 500px;
+  /* Ancho del 90% del viewport, también para responsividad */
+  width: 90%;
+  /* Bordes redondeados para el modal */
+  border-radius: 10px;
+  /* Sin contorno para el modal */
+  outline: none;
+}
+
+/* Estilos para el encabezado dentro del modal */
+.login-alert-modal-content h2 {
+  /* Sin margen superior para el encabezado del modal */
+  margin-top: 0;
+}
+
+/* Estilos para los botones dentro del modal */
+.login-alert-modal-content button {
+  /* Fondo azul para el botón principal */
+  background-color: #007bff;
+  /* Texto blanco para el botón principal */
+  color: white;
+  /* Sin borde para el botón */
+  border: none;
+  /* Espaciado interno para el botón */
+  padding: 10px 20px;
+  /* Bordes redondeados para el botón */
+  border-radius: 5px;
+  /* Cambia el cursor al pasar sobre el botón, indicando que es clicable */
+  cursor: pointer;
+  /* Margen superior para separar el botón del contenido anterior */
+  margin-top: 10px;
+}
+
+/* Estilos para el botón cuando se pasa el cursor sobre él */
+.login-alert-modal-content button:hover {
+  /* Fondo azul más oscuro para el botón al pasar el cursor */
+  background-color: #0056b3;
+}

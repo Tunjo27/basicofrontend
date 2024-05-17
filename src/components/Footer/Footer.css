@@ -1,20 +1,23 @@
+/* Estilos básicos para el footer */
 .footer {
-  background-color: #34495e;
-  padding: 20px;
-  text-align: center;
-  color: white;
-  width: auto;
-  max-width: 100%;
-  overflow-x: hidden;
+  background-color: #34495e; /* Color de fondo del footer */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto al centro */
+  color: white; /* Color del texto */
+  width: auto; /* Ancho automático */
+  max-width: 100%; /* Ancho máximo del 100% */
+  overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 }
 
+/* Estilos para el footer estático */
 .static-footer {
-  position: static; 
+  position: static; /* Posicionamiento estático, el valor por defecto */
 }
 
+/* Estilos para el footer fijo */
 .scrollable-footer {
-  position: fixed; 
-  bottom: 0;
-  left: 0;
-  min-width: 100%; 
+  position: fixed; /* Posiciona el footer de forma fija */
+  bottom: 0; /* Posiciona el footer en la parte inferior de la ventana */
+  left: 0; /* Posiciona el footer en el lado izquierdo de la ventana */
+  min-width: 100%; /* Ancho mínimo del 100% */
 }

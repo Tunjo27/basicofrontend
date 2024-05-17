@@ -1,83 +1,98 @@
+/* Importa la fuente "Open Sans" desde Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
-  .header {
-    background-color: #34495e;
-    padding: 20px 0;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  nav{
-    position: relative;
-    width: 480px;
-    height: 50px;
-    background: #34495e;
-    border-radius: 8px;
-  }
+/* Estilos para el contenedor principal del encabezado */
+.header {
+  background-color: #34495e; /* Color de fondo del encabezado */
+  padding: 20px 0; /* Espaciado arriba y abajo */
+}
 
-  nav a{
-    font-size: 15px;
-    text-transform: uppercase;
-    color: white;
-    text-decoration: none;
-    line-height: 50px;
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    text-align: center;
-  }
+/* Estilos para el contenedor interno del encabezado */
+.container {
+  display: flex; /* Utiliza flexbox para el diseño */
+  justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+  align-items: center; /* Alinea los elementos hijos verticalmente al centro */
+}
 
-  nav .animation{
-    position: absolute;
-    height: 100%;
-    top: 0;
-    z-index: 0;
-    background: #3C4043;
-    border-radius: 8px;
-    transition: all .15s ease 0s;
-  }
+/* Estilos para la navegación */
+nav {
+  position: relative; /* Posicionamiento relativo para poder usar posicionamiento absoluto en hijos */
+  width: 600px; /* Ancho de la barra de navegación */
+  height: 50px; /* Altura de la barra de navegación */
+  background: #34495e; /* Color de fondo de la barra de navegación */
+  border-radius: 8px; /* Bordes redondeados */
+}
 
-  nav a:nth-child(1){
-    width: 100px;
-  }
+/* Estilos para los enlaces dentro de la navegación */
+nav a {
+  font-size: 15px; /* Tamaño de la fuente */
+  text-transform: uppercase; /* Transformar el texto a mayúsculas */
+  color: white; /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  line-height: 50px; /* Altura de línea para centrar verticalmente el texto */
+  position: relative; /* Posicionamiento relativo para z-index */
+  z-index: 1; /* Nivel de apilamiento por encima de la animación */
+  display: inline-block; /* Mostrar los enlaces en línea como bloques */
+  text-align: center; /* Alinear el texto al centro */
+}
 
-  nav .start-home, a:nth-child(1):hover~.animation{
-    width: 100px;
-    left: 0;
-  }
+/* Estilos para la animación dentro de la navegación */
+nav .animation {
+  position: absolute; /* Posicionamiento absoluto dentro de nav */
+  height: 100%; /* Altura completa de la barra de navegación */
+  top: 0; /* Posicionado en la parte superior */
+  z-index: 0; /* Nivel de apilamiento por debajo de los enlaces */
+  background: #3C4043; /* Color de fondo de la animación */
+  border-radius: 8px; /* Bordes redondeados */
+  transition: all .15s ease 0s; /* Transición suave para los cambios de estado */
+}
 
-  nav a:nth-child(2){
-    width: 110px;
-  }
+/* Ancho específico para el primer enlace */
+nav a:nth-child(1) {
+  width: 100px;
+}
 
-  nav a:nth-child(2):hover~.animation{
-    width: 110px;
-    left: 100px;
-  }
+/* Estilo y posición de la animación cuando se pasa el ratón sobre el primer enlace */
+nav .start-home, a:nth-child(1):hover ~ .animation {
+  width: 100px;
+  left: 0;
+}
 
-  nav a:nth-child(3){
-    width: 100px;
-  }
+/* Ancho específico para el segundo enlace */
+nav a:nth-child(2) {
+  width: 110px;
+}
 
-  nav a:nth-child(3):hover~.animation{
-    width: 100px;
-    left: 210px;
-  }
+/* Estilo y posición de la animación cuando se pasa el ratón sobre el segundo enlace */
+nav a:nth-child(2):hover ~ .animation {
+  width: 110px;
+  left: 100px;
+}
 
-  nav a:nth-child(4){
-    width: 160px;
-  }
+/* Ancho específico para el tercer enlace */
+nav a:nth-child(3) {
+  width: 100px;
+}
 
-  nav a:nth-child(4):hover~.animation{
-    width: 160px;
-    left: 310px;
-  }
+/* Estilo y posición de la animación cuando se pasa el ratón sobre el tercer enlace */
+nav a:nth-child(3):hover ~ .animation {
+  width: 100px;
+  left: 210px;
+}
 
-  .logo {
-    width: 100px;
-    padding-left: 20px;
-  }
+/* Ancho específico para el cuarto enlace */
+nav a:nth-child(4) {
+  width: 160px;
+}
+
+/* Estilo y posición de la animación cuando se pasa el ratón sobre el cuarto enlace */
+nav a:nth-child(4):hover ~ .animation {
+  width: 160px;
+  left: 310px;
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 100px; /* Ancho del logo */
+  padding-left: 20px; /* Espaciado a la izquierda */
+}

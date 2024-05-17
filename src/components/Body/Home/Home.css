@@ -1,0 +1,49 @@
+/* Estilos para asegurar una altura mínima */
+.alturaminima {
+  min-height: 600px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para el slider de imágenes */
+.image-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+/* Estilos para las imágenes en el slider */
+.image-slider img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow-x: hidden; /* Corrección de error */
+}
+
+/* Estilos para los párrafos */
+p {
+  margin-left: 20px;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Estilos para los títulos */
+h1 {
+  margin-left: 20px;
+}
+
+/* Estilos para la línea divisoria */
+.line-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+  width: 90%;
+  margin-left: 20px;
+}

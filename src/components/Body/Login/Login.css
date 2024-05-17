@@ -1,0 +1,67 @@
+/* Estilos para la superposición del modal */
+.ReactModal__Overlay {
+  position: fixed; /* Fija la superposición a la ventana */
+  top: 0; /* Alinea la superposición con la parte superior de la ventana */
+  left: 0; /* Alinea la superposición con el lado izquierdo de la ventana */
+  right: 0; /* Alinea la superposición con el lado derecho de la ventana */
+  bottom: 0; /* Alinea la superposición con la parte inferior de la ventana */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex; /* Utiliza flexbox para alinear el contenido */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+/* Estilos para el contenido del modal */
+.ReactModal__Content {
+  position: relative; /* Posicionamiento relativo para ajustes internos */
+  background-color: #fff; /* Color de fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  max-width: 400px; /* Ancho máximo del contenido */
+  width: 90%; /* Ancho responsivo del contenido */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+}
+
+/* Estilos para el encabezado del modal */
+.ReactModal__Content h2 {
+  margin-top: 0; /* Sin margen superior */
+}
+
+/* Estilos para el formulario dentro del modal */
+.ReactModal__Content form {
+  display: flex; /* Utiliza flexbox para el diseño */
+  flex-direction: column; /* Dirección de los elementos del formulario en columna */
+  gap: 10px; /* Espaciado entre los elementos del formulario */
+}
+
+/* Estilos para las etiquetas dentro del modal */
+.ReactModal__Content label {
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos para los campos de entrada dentro del modal */
+.ReactModal__Content input {
+  padding: 8px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Estilos para los botones dentro del modal */
+.ReactModal__Content button {
+  padding: 8px 16px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Estilos para el primer botón (por ejemplo, botón de acción principal) */
+.ReactModal__Content button:first-child {
+  background-color: #007bff; /* Color de fondo azul */
+  color: #fff; /* Color de texto blanco */
+}
+
+/* Estilos para el último botón (por ejemplo, botón de cancelar) */
+.ReactModal__Content button:last-child {
+  background-color: #ccc; /* Color de fondo gris claro */
+  margin-top: 10px; /* Margen superior */
+}
