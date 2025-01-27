@@ -6,14 +6,14 @@
 }
 
 /* Estilos para cada elemento del carrito */
-.cart-item {
+.cart-product {
   display: flex; /* Muestra los elementos en línea */
   align-items: center; /* Alinea verticalmente los elementos */
   margin-bottom: 10px; /* Espaciado inferior de 10px */
 }
 
 /* Estilos para las imágenes de los elementos del carrito */
-.cart-item img {
+.cart-product img {
   width: 100px; /* Ancho de la imagen */
   height: 100px; /* Altura de la imagen */
   object-fit: cover; /* Ajuste de la imagen para cubrir */
@@ -21,22 +21,22 @@
 }
 
 /* Estilos para los detalles de cada elemento del carrito */
-.cart-item-details {
+.cart-product-details {
   flex: 1; /* Ocupa todo el espacio disponible */
 }
 
 /* Estilos para los títulos de los elementos del carrito */
-.cart-item-details h2 {
+.cart-product-details h2 {
   margin: 0; /* Elimina el margen superior e inferior */
 }
 
 /* Estilos para los párrafos de los detalles de los elementos del carrito */
-.cart-item-details p {
+.cart-product-details p {
   margin: 5px 0; /* Margen superior e inferior de 5px, margen lateral 0 */
 }
 
 /* Estilos para los botones dentro de los detalles de los elementos del carrito */
-.cart-item-details button {
+.cart-product-details button {
   background-color: red; /* Color de fondo rojo */
   color: white; /* Color de texto blanco */
   border: none; /* Sin borde */

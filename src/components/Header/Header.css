@@ -17,7 +17,7 @@
 /* Estilos para la navegación */
 nav {
   position: relative; /* Posicionamiento relativo para poder usar posicionamiento absoluto en hijos */
-  width: 600px; /* Ancho de la barra de navegación */
+  width: 580px; /* Ancho de la barra de navegación */
   height: 50px; /* Altura de la barra de navegación */
   background: #34495e; /* Color de fondo de la barra de navegación */
   border-radius: 8px; /* Bordes redondeados */
@@ -49,46 +49,57 @@ nav .animation {
 
 /* Ancho específico para el primer enlace */
 nav a:nth-child(1) {
-  width: 100px;
+  width: 80px;
 }
 
 /* Estilo y posición de la animación cuando se pasa el ratón sobre el primer enlace */
 nav .start-home, a:nth-child(1):hover ~ .animation {
-  width: 100px;
+  width: 80px;
   left: 0;
 }
 
 /* Ancho específico para el segundo enlace */
 nav a:nth-child(2) {
-  width: 110px;
+  width: 120px;
 }
 
 /* Estilo y posición de la animación cuando se pasa el ratón sobre el segundo enlace */
 nav a:nth-child(2):hover ~ .animation {
-  width: 110px;
-  left: 100px;
+  width: 120px;
+  left: 80px;
 }
 
 /* Ancho específico para el tercer enlace */
 nav a:nth-child(3) {
-  width: 100px;
+  width: 140px;
 }
 
 /* Estilo y posición de la animación cuando se pasa el ratón sobre el tercer enlace */
 nav a:nth-child(3):hover ~ .animation {
-  width: 100px;
-  left: 210px;
+  width: 140px;
+  left: 200px;
 }
 
 /* Ancho específico para el cuarto enlace */
 nav a:nth-child(4) {
-  width: 160px;
+  width: 100px;
 }
 
 /* Estilo y posición de la animación cuando se pasa el ratón sobre el cuarto enlace */
 nav a:nth-child(4):hover ~ .animation {
-  width: 160px;
-  left: 310px;
+  width: 100px;
+  left: 340px;
+}
+
+/* Ancho específico para el quinto enlace */
+nav a:nth-child(5) {
+  width: 100px;
+}
+
+/* Estilo y posición de la animación cuando se pasa el ratón sobre el quinto enlace */
+nav a:nth-child(5):hover ~ .animation {
+  width: 100px;
+  left: 440px;
 }
 
 /* Estilos para el logo */

@@ -25,8 +25,8 @@ const Header = ({ user, onOpenModal, onLogout }) => {
         <nav className="nav">
           {/* Enlaces de navegación */}
           <Link to="/">Home</Link>
-          <Link to="/Items">Items</Link>
-          <Link to="/Details">Detalles</Link>
+          <Link to="/Products">Productos</Link>
+          <Link to="/Promotions">Promociones</Link>
           <Link to="/Cart">Carrito</Link>
           {/* Mostrar el enlace "Ingresar" si el usuario no ha iniciado sesión */}
           {!isLoggedIn && <Link to="/Login" onClick={onOpenModal}>Ingresar</Link>}

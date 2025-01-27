@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Body/Home/Home';
-import Items from './components/Body/Items/Items';
-import Details from './components/Body/Details/Details';
-import Login from './components/Body/Login/Login';
+import Products from './components/Body/Products/Products';
+import Promotions from './components/Body/Promotions/Promotions';
 import Cart from './components/Body/Cart/Cart';
+import Login from './components/Body/Login/Login';
 
 /**
  * Componente principal de la aplicación.
@@ -19,10 +19,10 @@ const App = () => {
   const [user, setUser] = useState(null);
   // Estado para manejar la visibilidad del footer
   const [isFooterVisible] = useState(true);
+  // Estado para manejar los productos del carrito
+  const [cartProducts, setCartProducts] = useState([]);
   // Estado para manejar la apertura del modal de login
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Estado para manejar los items del carrito
-  const [cartItems, setCartItems] = useState([]);
 
   /**
    * Función para manejar el inicio de sesión.
@@ -43,33 +43,33 @@ const App = () => {
   };
 
   /**
-   * Función para añadir un item al carrito.
-   * @param {Object} item - El item a añadir al carrito.
+   * Función para añadir un producto al carrito.
+   * @param {Object} product - El producto a añadir al carrito.
    */
-  const handleAddToCart = (item) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
-      if (existingItem) {
-        return prevItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+  const handleAddToCart = (product) => {
+    setCartProducts((prevProducts) => {
+      const existingProduct = prevProducts.find((cartProduct) => cartProduct.id === product.id);
+      if (existingProduct) {
+        return prevProducts.map((cartProduct) =>
+          cartProduct.id === product.id
+            ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+            : cartProduct
         );
       } else {
-        return [...prevItems, { ...item, quantity: 1 }];
+        return [...prevProducts, { ...product, quantity: 1 }];
       }
     });
   };
 
   /**
-   * Función para remover un item del carrito.
-   * @param {number} id - El id del item a remover.
+   * Función para remover un producto del carrito.
+   * @param {number} id - El id del producto a remover.
    */
   const handleRemoveFromCart = (id) => {
-    setCartItems((prevItems) =>
-      prevItems
-        .map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item))
-        .filter((item) => item.quantity > 0)
+    setCartProducts((prevProducts) =>
+      prevProducts
+        .map((product) => (product.id === id ? { ...product, quantity: product.quantity - 1 } : product))
+        .filter((product) => product.quantity > 0)
     );
   };
 
@@ -80,9 +80,9 @@ const App = () => {
       <Routes>
         {/* Rutas de la aplicación */}
         <Route path="/" element={<Home />} />
-        <Route path="/Items" element={<Items user={user} />} />
-        <Route path="/Details/:id" element={<Details user={user} onAddToCart={handleAddToCart} />} />
-        <Route path="/Cart" element={<Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} user={user} />} />
+        <Route path="/Products" element={<Products user={user} />} />
+        <Route path="/Promotions/:id" element={<Promotions user={user} onAddToCart={handleAddToCart} />} />
+        <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} user={user} />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />
       </Routes>
       {/* Footer, visible dependiendo del estado */}

@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginAlertModal from '../Login/LoginAlertModal/LoginAlertModal';
 import database from '../../../database.json';
-import './Items.css';
+import './Products.css';
 
 /**
- * Componente Items
+ * Componente Products
  * 
  * @param {Object} props - Las propiedades del componente.
  * @param {Object} props.user - Información del usuario autenticado.
  * 
- * @returns {JSX.Element} El componente Items.
+ * @returns {JSX.Element} El componente Products.
  */
-const Items = ({ user }) => {
+const Products = ({ user }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredItems, setFilteredItems] = useState(database);
+  const [filteredProducts, setFilteredProducts] = useState(database);
   const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(!user);
   const navigate = useNavigate();
 
@@ -28,29 +28,29 @@ const Items = ({ user }) => {
     );
   }
 
-  // Función para manejar la búsqueda de items
+  // Función para manejar la búsqueda de productos
   const handleSearch = (event) => {
     const term = event.target.value;
     setSearchTerm(term);
-    const filtered = database.filter(item =>
-      item.title.toLowerCase().includes(term.toLowerCase())
+    const filtered = database.filter(product =>
+      product.title.toLowerCase().includes(term.toLowerCase())
     );
-    setFilteredItems(filtered);
+    setFilteredProducts(filtered);
   };
 
   // Función para manejar el cambio de categoría
   const handleCategoryChange = (event) => {
     const category = event.target.value;
-    const filtered = category === 'all' ? database : database.filter(item => item.category === category);
-    setFilteredItems(filtered);
+    const filtered = category === 'all' ? database : database.filter(product => product.category === category);
+    setFilteredProducts(filtered);
   };
 
-  // Función para manejar el clic en un item
+  // Función para manejar el clic en un producto
   const handleItemClick = (id) => {
-    navigate(`/Details/${id}`);
+    navigate(`/Promotions/${id}`);
   };
 
-  // Renderizar el componente Items
+  // Renderizar el componente Products
   return (
     <div>
       <div className="search">
@@ -69,12 +69,12 @@ const Items = ({ user }) => {
           <option value="manubrios">Manubrios</option>
         </select>
       </div>  
-      <div className="item-list">
-        {filteredItems.map(item => (
-          <div className="item" key={item.id} onClick={() => handleItemClick(item.id)}>
-            <img src={process.env.PUBLIC_URL + '/images/' + item.imageSrc} alt={item.title} />
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
+      <div className="product-list">
+        {filteredProducts.map(product => (
+          <div className="product" key={product.id} onClick={() => handleItemClick(product.id)}>
+            <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
+            <h2>{product.title}</h2>
+            <p>{product.description}</p>
           </div>
         ))}
       </div>
@@ -82,4 +82,4 @@ const Items = ({ user }) => {
   );
 };
 
-export default Items;
+export default Products;

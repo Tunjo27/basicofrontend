@@ -6,16 +6,16 @@ import './Cart.css'; // Importa los estilos CSS asociados
  * Componente funcional que representa el carrito de compras.
  * 
  * Props:
- * - cartItems: Array de objetos representando los elementos en el carrito.
+ * - cartProducts: Array de objetos representando los elementos en el carrito.
  * - onRemoveFromCart: Función para eliminar un elemento del carrito.
  * - user: Objeto que representa al usuario actual.
  * 
  * @param {Object} props Propiedades del componente.
  * @returns {JSX.Element} Elemento JSX que representa el carrito de compras.
  */
-const Cart = ({ cartItems, onRemoveFromCart, user }) => {
+const Cart = ({ cartProducts, onRemoveFromCart, user }) => {
   // Calcula el total del carrito sumando los precios por la cantidad de cada elemento
-  const total = cartItems.reduce((acc, item) => acc + (item.price || 0) * item.quantity, 0);
+  const total = cartProducts.reduce((acc, product) => acc + (product.price || 0) * product.quantity, 0);
   
   // Estado para controlar si se muestra la alerta de inicio de sesión
   const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(!user);
@@ -36,14 +36,14 @@ const Cart = ({ cartItems, onRemoveFromCart, user }) => {
       <h1>Carrito de Compras</h1>
       <ul>
         {/* Mapea los elementos del carrito y renderiza cada uno */}
-        {cartItems.map((item) => (
-          <li key={item.id} className="cart-item">
-            <img src={process.env.PUBLIC_URL + '/images/' + item.imageSrc} alt={item.title} />
-            <div className="cart-item-details">
-              <h2>{item.title}</h2>
-              <p>Precio: ${item.price ? item.price.toFixed(2) : 'N/A'}</p>
-              <p>Cantidad: {item.quantity}</p>
-              <button onClick={() => onRemoveFromCart(item.id)}>Eliminar</button>
+        {cartProducts.map((product) => (
+          <li key={product.id} className="cart-product">
+            <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
+            <div className="cart-product-details">
+              <h2>{product.title}</h2>
+              <p>Precio: ${product.price ? product.price.toFixed(2) : 'N/A'}</p>
+              <p>Cantidad: {product.quantity}</p>
+              <button onClick={() => onRemoveFromCart(product.id)}>Eliminar</button>
             </div>
           </li>
         ))}

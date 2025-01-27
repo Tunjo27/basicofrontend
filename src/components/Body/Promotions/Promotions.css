@@ -1,5 +1,5 @@
-/* Estilos para la lista de detalles */
-.detail-list {
+/* Estilos para la lista de promociones */
+.promotion-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -7,8 +7,8 @@
   flex-wrap: wrap;
 }
 
-/* Estilos para cada detalle */
-.detail {
+/* Estilos para cada promocion */
+.promotion {
   background-color: #3C4043;
   color: white;
   border: 1px solid #ccc;
@@ -19,8 +19,8 @@
   box-sizing: border-box; 
 }
 
-/* Estilos para las imágenes dentro de los detalles */
-.detail img {
+/* Estilos para las imágenes dentro de los promociones */
+.promotion img {
   width: 100%;
   height: 200px;
   object-fit: cover;
