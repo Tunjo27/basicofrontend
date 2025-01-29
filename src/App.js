@@ -80,7 +80,7 @@ const App = () => {
       <Routes>
         {/* Rutas de la aplicación */}
         <Route path="/" element={<Home />} />
-        <Route path="/Products" element={<Products />} />
+        <Route path="/Products" element={<Products onAddToCart={handleAddToCart} />} />
         <Route path="/Promotions/:id" element={<Promotions onAddToCart={handleAddToCart} />} />
         <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} />} />
         <Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />

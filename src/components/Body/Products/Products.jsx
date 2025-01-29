@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
 import database from '../../../database.json';
 import './Products.css';
 
@@ -7,19 +6,13 @@ import './Products.css';
  * Componente Products
  * 
  * @param {Object} props - Las propiedades del componente.
- * @param {Object} props.user - Información del usuario autenticado.
  * 
  * @returns {JSX.Element} El componente Products.
  */
-const Products = ({ user }) => {
+const Products = ({ onAddToCart }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(database);
-  const navigate = useNavigate();
-
-  /*if (!user) {
-    return <Navigate to="/Products" />;
-    //return <Navigate to="/Login" state={{ from: '/Products' }} />;
-  }*/
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   // Función para manejar la búsqueda de productos
   const handleSearch = (event) => {
@@ -40,8 +33,42 @@ const Products = ({ user }) => {
 
   // Función para manejar el clic en un producto
   const handleItemClick = (id) => {
-    navigate(`/Promotions/${id}`);
+    setSelectedProductId(id); // Actualiza el ID del producto seleccionado
   };
+
+  const ProductDetails = ({ product, onAddToCart }) => {
+    // Función para agregar el artículo al carrito
+    const handleAddToCart = () => {
+      if (product && typeof product.price === 'number') {
+        onAddToCart(product); // Llama a la función onAddToCart pasando el artículo como argumento
+      } else {
+        console.error('El precio del producto no está definido o no es un número.');
+      }
+    };
+
+    if (!product) {
+      return <div>Producto no encontrado</div>;
+    }
+
+    return (
+      <div className="promotion-list">
+        <div className="promotion">
+          <h1>{product.title}</h1>
+          <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
+          <p>Precio: {typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : 'Precio no disponible'}</p>
+          <button className="buy-button" onClick={handleAddToCart}>Comprar</button>
+        </div>
+      </div>
+    );
+  };
+
+  const ProductItem = ({ product, onClick }) => (
+    <div className="product" key={product.id} onClick={() => onClick(product.id)}>
+      <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
+      <h2>{product.title}</h2>
+      <p>{product.description}</p>
+    </div>
+  );
 
   // Renderizar el componente Products
   return (
@@ -62,15 +89,19 @@ const Products = ({ user }) => {
           <option value="manubrios">Manubrios</option>
         </select>
       </div>  
-      <div className="product-list">
-        {filteredProducts.map(product => (
-          <div className="product" key={product.id} onClick={() => handleItemClick(product.id)}>
-            <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
-            <h2>{product.title}</h2>
-            <p>{product.description}</p>
-          </div>
-        ))}
-      </div>
+      {/* Renderizado condicional: detalles o lista */}
+      {selectedProductId ? ( // Si hay un producto seleccionado, muestra los detalles
+        <ProductDetails 
+          product={filteredProducts.find(p => p.id === selectedProductId)} // Busca en filteredProducts
+          onAddToCart={onAddToCart} 
+        />
+      ) : ( // Si no hay producto seleccionado, muestra la lista
+        <div className="product-list">
+          {filteredProducts.map(product => ( // Itera sobre filteredProducts
+            <ProductItem product={product} onClick={handleItemClick} />
+          ))}
+        </div>
+      )}
     </div>  
   );
 };
