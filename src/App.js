@@ -80,9 +80,9 @@ const App = () => {
       <Routes>
         {/* Rutas de la aplicación */}
         <Route path="/" element={<Home />} />
-        <Route path="/Products" element={<Products user={user} />} />
-        <Route path="/Promotions/:id" element={<Promotions user={user} onAddToCart={handleAddToCart} />} />
-        <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} user={user} />} />
+        <Route path="/Products" element={<Products />} />
+        <Route path="/Promotions/:id" element={<Promotions onAddToCart={handleAddToCart} />} />
+        <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} />} />
         <Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />
         <Route path="/ManagementPromotions" element={<Login onLogin={handleLogin} />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />

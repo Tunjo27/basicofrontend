@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LoginAlertModal from '../Login/LoginAlertModal/LoginAlertModal'; // Importa el componente LoginAlertModal
+import { Navigate } from 'react-router-dom';
 import './Cart.css'; // Importa los estilos CSS asociados
 
 /**
@@ -21,14 +21,9 @@ const Cart = ({ cartProducts, onRemoveFromCart, user }) => {
   const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(!user);
 
   // Si no hay usuario, muestra el componente LoginAlertModal
-  if (!user) {
-    return (
-      <LoginAlertModal
-        isOpen={isLoginAlertOpen}
-        onRequestClose={() => setIsLoginAlertOpen(false)}
-      />
-    );
-  }
+  /*if (!user) {
+    return <Navigate to="/Cart" />;
+  }*/
 
   // Renderiza el componente del carrito de compras
   return (

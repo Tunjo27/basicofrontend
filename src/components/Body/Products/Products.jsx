@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import LoginAlertModal from '../Login/LoginAlertModal/LoginAlertModal';
+import { useNavigate, Navigate } from 'react-router-dom';
 import database from '../../../database.json';
 import './Products.css';
 
@@ -15,18 +14,12 @@ import './Products.css';
 const Products = ({ user }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(database);
-  const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(!user);
   const navigate = useNavigate();
 
-  // Mostrar el modal de alerta de inicio de sesión si el usuario no está autenticado
-  if (!user) {
-    return (
-      <LoginAlertModal
-        isOpen={isLoginAlertOpen}
-        onRequestClose={() => setIsLoginAlertOpen(false)}
-      />
-    );
-  }
+  /*if (!user) {
+    return <Navigate to="/Products" />;
+    //return <Navigate to="/Login" state={{ from: '/Products' }} />;
+  }*/
 
   // Función para manejar la búsqueda de productos
   const handleSearch = (event) => {

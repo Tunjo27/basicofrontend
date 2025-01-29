@@ -35,14 +35,14 @@ const Promotions = ({ user, onAddToCart }) => {
   };
 
   // Renderiza el componente según el estado del usuario y la existencia del artículo
-  if (!user) {
+  /*if (!user) {
     return (
       <LoginAlertModal
         isOpen={isLoginAlertOpen}
         onRequestClose={() => setIsLoginAlertOpen(false)}
       />
     );
-  }
+  }*/
 
   if (!product) {
     return <div>Producto no encontrado</div>;
