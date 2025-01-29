@@ -28,10 +28,17 @@ const Header = ({ user, onOpenModal, onLogout }) => {
           <Link to="/Products">Productos</Link>
           <Link to="/Promotions">Promociones</Link>
           <Link to="/Cart">Carrito</Link>
-          {/* Mostrar el enlace "Ingresar" si el usuario no ha iniciado sesión */}
-          {!isLoggedIn && <Link to="/Login" onClick={onOpenModal}>Ingresar</Link>}
-          {/* Mostrar el enlace "Cerrar sesión" si el usuario ha iniciado sesión */}
-          {isLoggedIn && <Link to="/" onClick={onLogout}>Cerrar sesión</Link>}
+          {/* Mostrar enlaces si el usuario ha iniciado sesión */}
+          <div className={`management-links ${isLoggedIn ? 'visible' : 'hidden'}`}> 
+            <Link to="/ManagementProducts">G. Productos</Link>
+            <Link to="/ManagementPromotions">G. Promociones</Link>
+          </div>  
+          {/* Condicional para mostrar "Ingresar" o "Cerrar sesión" */}
+          {isLoggedIn ? (
+            <Link to="/" onClick={onLogout}>Cerrar sesión</Link>
+          ) : (
+            <Link to="/Login" onClick={onOpenModal}>Ingresar</Link>
+          )}
           {/* Animación de navegación */}
           <div className='animation start-home'></div>
         </nav>

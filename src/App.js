@@ -83,6 +83,8 @@ const App = () => {
         <Route path="/Products" element={<Products user={user} />} />
         <Route path="/Promotions/:id" element={<Promotions user={user} onAddToCart={handleAddToCart} />} />
         <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} user={user} />} />
+        <Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />
+        <Route path="/ManagementPromotions" element={<Login onLogin={handleLogin} />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />
       </Routes>
       {/* Footer, visible dependiendo del estado */}

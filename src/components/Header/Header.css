@@ -16,90 +16,27 @@
 
 /* Estilos para la navegación */
 nav {
-  position: relative; /* Posicionamiento relativo para poder usar posicionamiento absoluto en hijos */
-  width: 580px; /* Ancho de la barra de navegación */
-  height: 50px; /* Altura de la barra de navegación */
-  background: #34495e; /* Color de fondo de la barra de navegación */
-  border-radius: 8px; /* Bordes redondeados */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
 /* Estilos para los enlaces dentro de la navegación */
 nav a {
-  font-size: 15px; /* Tamaño de la fuente */
   text-transform: uppercase; /* Transformar el texto a mayúsculas */
   color: white; /* Color del texto */
   text-decoration: none; /* Sin subrayado */
-  line-height: 50px; /* Altura de línea para centrar verticalmente el texto */
-  position: relative; /* Posicionamiento relativo para z-index */
-  z-index: 1; /* Nivel de apilamiento por encima de la animación */
-  display: inline-block; /* Mostrar los enlaces en línea como bloques */
-  text-align: center; /* Alinear el texto al centro */
+  padding: 0.5rem;
+  flex: 1;
 }
 
-/* Estilos para la animación dentro de la navegación */
-nav .animation {
-  position: absolute; /* Posicionamiento absoluto dentro de nav */
-  height: 100%; /* Altura completa de la barra de navegación */
-  top: 0; /* Posicionado en la parte superior */
-  z-index: 0; /* Nivel de apilamiento por debajo de los enlaces */
-  background: #3C4043; /* Color de fondo de la animación */
-  border-radius: 8px; /* Bordes redondeados */
-  transition: all .15s ease 0s; /* Transición suave para los cambios de estado */
+.management-links, .logout-link {
+  display: none;
 }
 
-/* Ancho específico para el primer enlace */
-nav a:nth-child(1) {
-  width: 80px;
-}
-
-/* Estilo y posición de la animación cuando se pasa el ratón sobre el primer enlace */
-nav .start-home, a:nth-child(1):hover ~ .animation {
-  width: 80px;
-  left: 0;
-}
-
-/* Ancho específico para el segundo enlace */
-nav a:nth-child(2) {
-  width: 120px;
-}
-
-/* Estilo y posición de la animación cuando se pasa el ratón sobre el segundo enlace */
-nav a:nth-child(2):hover ~ .animation {
-  width: 120px;
-  left: 80px;
-}
-
-/* Ancho específico para el tercer enlace */
-nav a:nth-child(3) {
-  width: 140px;
-}
-
-/* Estilo y posición de la animación cuando se pasa el ratón sobre el tercer enlace */
-nav a:nth-child(3):hover ~ .animation {
-  width: 140px;
-  left: 200px;
-}
-
-/* Ancho específico para el cuarto enlace */
-nav a:nth-child(4) {
-  width: 100px;
-}
-
-/* Estilo y posición de la animación cuando se pasa el ratón sobre el cuarto enlace */
-nav a:nth-child(4):hover ~ .animation {
-  width: 100px;
-  left: 340px;
-}
-
-/* Ancho específico para el quinto enlace */
-nav a:nth-child(5) {
-  width: 100px;
-}
-
-/* Estilo y posición de la animación cuando se pasa el ratón sobre el quinto enlace */
-nav a:nth-child(5):hover ~ .animation {
-  width: 100px;
-  left: 440px;
+.management-links.visible, .logout-link.visible {
+  display: block;
 }
 
 /* Estilos para el logo */
