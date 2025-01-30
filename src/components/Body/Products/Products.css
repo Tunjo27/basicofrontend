@@ -118,6 +118,7 @@
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -131,4 +132,41 @@
 .buy-button:active {
   background-color: #d14933; /* Color tomate aún más oscuro */
   transform: translateY(0);
+}
+
+.back-button {
+  background-color: #007bff; /* Un color azul */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Espacio arriba del botón */
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+.add-to-cart-alert {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-align: center; /* Centra el texto */
+  animation: fadeOut 3s forwards; /* Animación de desvanecimiento */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

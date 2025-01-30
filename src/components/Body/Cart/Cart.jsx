@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import React from 'react';
 import './Cart.css'; // Importa los estilos CSS asociados
 
 /**
@@ -8,22 +7,19 @@ import './Cart.css'; // Importa los estilos CSS asociados
  * Props:
  * - cartProducts: Array de objetos representando los elementos en el carrito.
  * - onRemoveFromCart: Función para eliminar un elemento del carrito.
- * - user: Objeto que representa al usuario actual.
  * 
  * @param {Object} props Propiedades del componente.
  * @returns {JSX.Element} Elemento JSX que representa el carrito de compras.
  */
-const Cart = ({ cartProducts, onRemoveFromCart, user }) => {
+const Cart = ({ cartProducts, onRemoveFromCart }) => {
   // Calcula el total del carrito sumando los precios por la cantidad de cada elemento
   const total = cartProducts.reduce((acc, product) => acc + (product.price || 0) * product.quantity, 0);
-  
-  // Estado para controlar si se muestra la alerta de inicio de sesión
-  const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(!user);
 
-  // Si no hay usuario, muestra el componente LoginAlertModal
-  /*if (!user) {
-    return <Navigate to="/Cart" />;
-  }*/
+  // Formatea el total con separadores de miles
+  const formattedTotal = total.toLocaleString('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  });
 
   // Renderiza el componente del carrito de compras
   return (
@@ -36,7 +32,13 @@ const Cart = ({ cartProducts, onRemoveFromCart, user }) => {
             <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
             <div className="cart-product-details">
               <h2>{product.title}</h2>
-              <p>Precio: ${product.price ? product.price.toFixed(2) : 'N/A'}</p>
+              <p>
+                Precio:{' '}
+                {(product.price || 0).toLocaleString('es-CO', { // Formato en el precio individual
+                  style: 'currency',
+                  currency: 'COP'
+                })}
+              </p>
               <p>Cantidad: {product.quantity}</p>
               <button onClick={() => onRemoveFromCart(product.id)}>Eliminar</button>
             </div>
@@ -45,7 +47,7 @@ const Cart = ({ cartProducts, onRemoveFromCart, user }) => {
       </ul>
       {/* Muestra el total del carrito */}
       <div className="cart-total">
-        <h2>Total: ${total.toFixed(2)}</h2>
+        <h2>Total: {formattedTotal}</h2>
       </div>
     </div>
   );

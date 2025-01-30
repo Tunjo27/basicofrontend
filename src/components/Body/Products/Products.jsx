@@ -40,7 +40,7 @@ const Products = ({ onAddToCart }) => {
     // Función para agregar el artículo al carrito
     const handleAddToCart = () => {
       if (product && typeof product.price === 'number') {
-        onAddToCart(product); // Llama a la función onAddToCart pasando el artículo como argumento
+        onAddToCart(product);
       } else {
         console.error('El precio del producto no está definido o no es un número.');
       }
@@ -55,8 +55,17 @@ const Products = ({ onAddToCart }) => {
         <div className="promotion">
           <h1>{product.title}</h1>
           <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
-          <p>Precio: {typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : 'Precio no disponible'}</p>
+          <p>
+            Precio:{' '}
+            {product && typeof product.price === 'number'
+              ? product.price.toLocaleString('es-CO', {
+                  style: 'currency',
+                  currency: 'COP',
+                })
+              : 'Precio no disponible'}
+          </p>
           <button className="buy-button" onClick={handleAddToCart}>Comprar</button>
+          <button className="back-button" onClick={() => setSelectedProductId(null)}>Volver</button>
         </div>
       </div>
     );
