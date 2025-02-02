@@ -2,7 +2,8 @@
 .search {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px; /* Corrección de error en el valor de margen */
+  margin: 20px;
+  margin-bottom: 0px; /* Corrección de error en el valor de margen */
 }
 
 .search input {

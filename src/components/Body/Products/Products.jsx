@@ -99,7 +99,8 @@ const Products = ({ onAddToCart }) => {
           value={searchTerm}
           onChange={handleSearch}
         />
-      </div> 
+        <button onClick={() => { setSearchTerm(""); setFilteredProducts(JSON.parse(localStorage.getItem('products')) || database); }}>x</button>
+      </div>
       {/* Renderizado condicional: detalles o lista */}
       {selectedProductId ? ( // Si hay un producto seleccionado, muestra los detalles
         <ProductDetails 
