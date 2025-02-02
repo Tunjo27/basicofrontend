@@ -1,0 +1,71 @@
+/* Estilos para el contenedor principal */
+.product-management {
+    padding: 20px;
+    background-color: #f5f5f5; /* Un fondo gris claro */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Estilos para el encabezado */
+  .product-management h2 {
+    margin-bottom: 20px;
+    color: #333; /* Un color de texto oscuro */
+  }
+  
+  /* Estilos para el formulario */
+  .product-management form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre elementos */
+  }
+  
+  /* Estilos para las etiquetas */
+  .product-management label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Estilos para los campos de entrada */
+  .product-management input,
+  .product-management textarea,
+  .product-management select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Estilos para el botón de guardar */
+  .product-management button[type="submit"] {
+    background-color: #007bff; /* Azul */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .product-management button[type="submit"]:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+  }
+  
+  /* Estilos para la lista de productos (si la incluyes en este componente) */
+  .product-management .product-list {
+    margin-top: 20px;
+    display: grid; /* Diseño de cuadrícula */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* адаптивный дизайн */
+    gap: 20px;
+  }
+  
+  .product-management .product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .product-management .product img {
+    max-width: 100%;
+    height: auto;
+  }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import database from '../../../database.json';
 import './Products.css';
 
@@ -14,21 +14,31 @@ const Products = ({ onAddToCart }) => {
   const [filteredProducts, setFilteredProducts] = useState(database);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
+  useEffect(() => {
+    // Obtener los productos desde localStorage
+    const storedProducts = JSON.parse(localStorage.getItem('products'));
+
+    if (storedProducts) {
+      setFilteredProducts(storedProducts);
+    } else {
+      setFilteredProducts(database); // Usar database como respaldo
+    }
+  }, []);
+
   // Función para manejar la búsqueda de productos
   const handleSearch = (event) => {
     const term = event.target.value;
     setSearchTerm(term);
-    const filtered = database.filter(product =>
-      product.title.toLowerCase().includes(term.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-  };
-
-  // Función para manejar el cambio de categoría
-  const handleCategoryChange = (event) => {
-    const category = event.target.value;
-    const filtered = category === 'all' ? database : database.filter(product => product.category === category);
-    setFilteredProducts(filtered);
+    
+    if (term.trim() !== "") {
+      const filtered = filteredProducts.filter(product =>
+        product.title.toLowerCase().includes(term.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      // Si el término de búsqueda está vacío, muestra todos los productos
+      setFilteredProducts(JSON.parse(localStorage.getItem('products')) || database);
+    }
   };
 
   // Función para manejar el clic en un producto
@@ -89,15 +99,7 @@ const Products = ({ onAddToCart }) => {
           value={searchTerm}
           onChange={handleSearch}
         />
-      </div>
-      <div className="category-filter">
-        <select onChange={handleCategoryChange}>
-          <option value="all">Todos</option>
-          <option value="bicicletas">Bicicletas</option>
-          <option value="cascos">Cascos</option>
-          <option value="manubrios">Manubrios</option>
-        </select>
-      </div>  
+      </div> 
       {/* Renderizado condicional: detalles o lista */}
       {selectedProductId ? ( // Si hay un producto seleccionado, muestra los detalles
         <ProductDetails 

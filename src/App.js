@@ -8,6 +8,7 @@ import Products from './components/Body/Products/Products';
 import Promotions from './components/Body/Promotions/Promotions';
 import Cart from './components/Body/Cart/Cart';
 import Login from './components/Body/Login/Login';
+import ProductManagement from './components/Body/Management/ProductManagement';
 
 /**
  * Componente principal de la aplicación.
@@ -83,7 +84,8 @@ const App = () => {
         <Route path="/Products" element={<Products onAddToCart={handleAddToCart} />} />
         <Route path="/Promotions/:id" element={<Promotions onAddToCart={handleAddToCart} />} />
         <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} />} />
-        <Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />
+        {/*<Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />*/}
+        <Route path="/ManagementProducts" element={<ProductManagement />} />
         <Route path="/ManagementPromotions" element={<Login onLogin={handleLogin} />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />
       </Routes>

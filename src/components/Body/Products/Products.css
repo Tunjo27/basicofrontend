@@ -20,22 +20,6 @@
   outline: none;
 }
 
-/* Estilos para el filtro de categorías */
-.category-filter {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.category-filter select {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 /* Estilos para la lista de elementos */
 .product-list {
   list-style: none;
