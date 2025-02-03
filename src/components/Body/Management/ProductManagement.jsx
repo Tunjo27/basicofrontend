@@ -107,7 +107,6 @@ function ProductManagement() {
               onChange={(e) => setProductToEdit({...productToEdit, title: e.target.value})}
               required
             />
-
             <label htmlFor="description">Descripción:</label>
             <textarea
               name="description"
@@ -115,7 +114,6 @@ function ProductManagement() {
               onChange={(e) => setProductToEdit({...productToEdit, description: e.target.value})}
               required
             />
-
             <label htmlFor="price">Precio:</label>
             <input
               type="number"
@@ -124,11 +122,8 @@ function ProductManagement() {
               onChange={(e) => setProductToEdit({...productToEdit, price: parseFloat(e.target.value)})}
               required
             />
-
-            {/* ... otros campos del formulario (imagen, etc.) */}
-
-            <button type="submit">Guardar cambios</button>
-            <button type="button" onClick={handleCancelEdit}>Cancelar</button>
+            <button>Guardar cambios</button>
+            <button onClick={handleCancelEdit}>Cancelar</button>
           </form>
         </div>
       )}
