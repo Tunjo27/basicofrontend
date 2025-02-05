@@ -21,6 +21,29 @@ const Cart = ({ cartProducts, onRemoveFromCart }) => {
     currency: 'COP'
   });
 
+  const enviarWhatsApp = () => {
+    const mensaje = `¡Hola! Quiero hacer el siguiente pedido:\n\n${cartProducts
+        .map(
+            (producto) =>
+                `- ${producto.title} x ${producto.quantity} - ${producto.price.toLocaleString(
+                    'es-CO',
+                    {
+                        style: 'currency',
+                        currency: 'COP',
+                    }
+                )}`
+        )
+        .join('\n')}\n\nTotal: ${total.toLocaleString('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+    })}`;
+
+    const telefono = '573102907287'; // Reemplaza con tu número de WhatsApp
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
+  };
+
   // Renderiza el componente del carrito de compras
   return (
     <div className="cart">
@@ -48,6 +71,7 @@ const Cart = ({ cartProducts, onRemoveFromCart }) => {
       {/* Muestra el total del carrito */}
       <div className="cart-total">
         <h2>Total: {formattedTotal}</h2>
+        <button onClick={enviarWhatsApp}>Enviar pedido por WhatsApp</button>
       </div>
     </div>
   );

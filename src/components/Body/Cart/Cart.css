@@ -53,3 +53,12 @@
 .cart-total h2 {
   margin: 0; /* Elimina el margen superior e inferior */
 }
+
+.cart-total button {
+  background-color: #25d366; /* Color verde de WhatsApp */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
