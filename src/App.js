@@ -66,8 +66,22 @@ const App = () => {
    * @param {number} id - El id del producto a remover.
    */
   const handleRemoveFromCart = (id) => {
-    setCart(cart.filter(item => item.id !== id));
-  };
+    setCart(prevCart => {
+        const itemToRemove = prevCart.find(item => item.id === id);
+
+        if (itemToRemove) {
+            if (itemToRemove.quantity > 1) {
+                return prevCart.map(item =>
+                    item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+                );
+            } else {
+                return prevCart.filter(item => item.id !== id);
+            }
+        } else {
+            return prevCart;
+        }
+    });
+};
 
   return (
     <Router>
@@ -78,7 +92,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Products" element={<Products onAddToCart={handleAddToCart} />} />
         <Route path="/Promotions" element={<Promotions onAddToCart={handleAddToCart} />} />
-        <Route path="/Cart" element={<Cart cart={cart} onRemoveFromCart={handleRemoveFromCart} />} />
+        <Route path="/Cart" element={<Cart cart={cart} onRemoveFromCart={handleRemoveFromCart} onClearCart={() => setCart([])} />} />
         {/*<Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />*/}
         <Route path="/ManagementProducts" element={<ProductManagement />} />
         <Route path="/ManagementPromotions" element={<PromotionsManagement />} />
