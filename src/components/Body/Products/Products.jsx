@@ -11,7 +11,7 @@ import './Products.css';
  */
 const Products = ({ onAddToCart }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(database);
+  const [filteredProducts, setFilteredProducts] = useState(database.products || []);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
   useEffect(() => {

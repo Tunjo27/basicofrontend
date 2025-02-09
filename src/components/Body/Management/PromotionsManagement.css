@@ -1,0 +1,136 @@
+.promotions-management {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.promotions-management h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.promotions-management form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.promotions-management label {
+    font-weight: bold;
+    color: #555;
+}
+
+.promotions-management input,
+.promotions-management textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.promotions-management button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.promotions-management button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.promotions-management .product-images { /* Estilos para el contenedor de imágenes */
+    display: flex;
+    flex-wrap: wrap; /* Permite que las imágenes se ajusten al ancho */
+    gap: 5px; /* Espacio entre las imágenes */
+}
+
+.promotions-management .product-images img { /* Estilos para las imágenes */
+    width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.promotions-management .promotions-list .promotion {
+    /* Estilos específicos para los productos en la lista */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #3C4043;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s; /* Transición para la escala al pasar el mouse */
+}
+
+.promotions-management .promotions-list .promotion:hover {
+    transform: scale(1.02); /* Escalar un poco al pasar el mouse */
+}
+
+.promotions-management .promotions-list .promotion img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.promotions-management .promotions-list .promotion h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.promotions-management .promotions-list .promotion p {
+    font-size: 14px;
+}
+
+.promotions-management .promotions-list .promotion button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+.promotions-management .promotions-list .promotion button:hover {
+    background-color: #0056b3;
+}
+
+.promotions-management .promotions-list .promotion button:last-of-type {
+    background-color: #dc3545;
+    margin-right: 0;
+}
+
+.promotions-management .promotions-list .promotion button:last-of-type:hover {
+    background-color: #c30010;
+}
+
+.edit-promotion-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-promotion-form button:hover {
+    background-color: #0056b3;
+}
+
+.edit-promotion-form button:last-of-type {
+    background-color: #ccc;
+    color: black;
+}
+
+.edit-promotion-form button:last-of-type:hover {
+    background-color: #bbb;
+}

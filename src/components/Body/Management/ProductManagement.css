@@ -58,9 +58,6 @@
     background-color: #3C4043;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
     transition: transform 0.2s; /* Transición para la escala al pasar el mouse */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .product-management .product-list .product:hover {

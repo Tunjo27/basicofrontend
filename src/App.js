@@ -9,6 +9,7 @@ import Promotions from './components/Body/Promotions/Promotions';
 import Cart from './components/Body/Cart/Cart';
 import Login from './components/Body/Login/Login';
 import ProductManagement from './components/Body/Management/ProductManagement';
+import PromotionsManagement from './components/Body/Management/PromotionsManagement';
 
 /**
  * Componente principal de la aplicación.
@@ -21,7 +22,7 @@ const App = () => {
   // Estado para manejar la visibilidad del footer
   const [isFooterVisible] = useState(true);
   // Estado para manejar los productos del carrito
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   // Estado para manejar la apertura del modal de login
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,17 +48,15 @@ const App = () => {
    * Función para añadir un producto al carrito.
    * @param {Object} product - El producto a añadir al carrito.
    */
-  const handleAddToCart = (product) => {
-    setCartProducts((prevProducts) => {
-      const existingProduct = prevProducts.find((cartProduct) => cartProduct.id === product.id);
+  const handleAddToCart = (item) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find(cartItem => cartItem.id === item.id && cartItem.isPromotion === item.isPromotion);
       if (existingProduct) {
-        return prevProducts.map((cartProduct) =>
-          cartProduct.id === product.id
-            ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
-            : cartProduct
+        return prevCart.map(cartItem =>
+          cartItem.id === item.id && cartItem.isPromotion === item.isPromotion ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
         );
       } else {
-        return [...prevProducts, { ...product, quantity: 1 }];
+        return [...prevCart, { ...item, quantity: 1 }];
       }
     });
   };
@@ -67,11 +66,7 @@ const App = () => {
    * @param {number} id - El id del producto a remover.
    */
   const handleRemoveFromCart = (id) => {
-    setCartProducts((prevProducts) =>
-      prevProducts
-        .map((product) => (product.id === id ? { ...product, quantity: product.quantity - 1 } : product))
-        .filter((product) => product.quantity > 0)
-    );
+    setCart(cart.filter(item => item.id !== id));
   };
 
   return (
@@ -82,11 +77,11 @@ const App = () => {
         {/* Rutas de la aplicación */}
         <Route path="/" element={<Home />} />
         <Route path="/Products" element={<Products onAddToCart={handleAddToCart} />} />
-        <Route path="/Promotions/:id" element={<Promotions onAddToCart={handleAddToCart} />} />
-        <Route path="/Cart" element={<Cart cartProducts={cartProducts} onRemoveFromCart={handleRemoveFromCart} />} />
+        <Route path="/Promotions" element={<Promotions onAddToCart={handleAddToCart} />} />
+        <Route path="/Cart" element={<Cart cart={cart} onRemoveFromCart={handleRemoveFromCart} />} />
         {/*<Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />*/}
         <Route path="/ManagementProducts" element={<ProductManagement />} />
-        <Route path="/ManagementPromotions" element={<Login onLogin={handleLogin} />} />
+        <Route path="/ManagementPromotions" element={<PromotionsManagement />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />
       </Routes>
       {/* Footer, visible dependiendo del estado */}

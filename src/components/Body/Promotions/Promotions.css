@@ -1,0 +1,152 @@
+/* Promotions.css */
+.promotions {
+    padding: 20px;
+}
+
+.promotions .search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.promotions .search input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.promotions .search input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.promotions .promotions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.promotions .promotion {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background-color: #3C4043;
+    color: white;
+}
+
+.promotions .promotion:hover {
+    transform: scale(1.02);
+}
+
+.promotions .promotion-details {
+    padding: 20px;
+    background-color: #3C4043;
+    color: white;
+}
+
+.promotions .promotion-details h2 {
+    margin-bottom: 10px;
+}
+
+.promotions .promotion-details h3 {
+    margin-top: 20px;
+}
+
+.promotions .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.promotions .product-list .product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #282c34;
+    color: white;
+}
+
+.promotions .product-list .product img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.promotions .product-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.promotions .product-images img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.promotions .promotion-details button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: background-color 0.3s;
+}
+
+.promotions .promotion-details button:hover {
+    background-color: #0056b3;
+}
+
+.buy-button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+  
+.buy-button:hover {
+    background-color: #e5533d;
+    transform: translateY(-2px);
+}
+  
+.buy-button:active {
+    background-color: #d14933;
+    transform: translateY(0);
+}
+  
+.back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+  
+.back-button:hover {
+    background-color: #0056b3;
+}

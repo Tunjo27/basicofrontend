@@ -1,42 +1,60 @@
-[
-  {
-    "id": 1,
-    "category": "bicicletas",
-    "title": "Bicicleta de Ruta",
-    "description": "Una bicicleta de ruta es diseñada para carreras de carretera y es más adecuada para pavimentos y superficies lisas.",
-    "imageSrc": "ruta.jpg",
-    "price": 3000000
-  },
-  {
-    "id": 2,
-    "category": "bicicletas",
-    "title": "Bicicleta de Montaña",
-    "description": "Una bicicleta de montaña es ideal para terrenos accidentados y senderos fuera de carretera.",
-    "imageSrc": "mtb.jpg",
-    "price": 2700000
-  },
-  {
-    "id": 3,
-    "category": "bicicletas",
-    "title": "Bicicleta de Piñón Fijo",
-    "description": "Una bicicleta de piñón fijo tiene una única relación de transmisión y no dispone de rueda libre.",
-    "imageSrc": "fija.jpg",
-    "price": 2500000
-  },
-  {
-    "id": 4,
-    "category": "cascos",
-    "title": "Casco de Ruta",
-    "description": "Un casco de ruta ligero y aerodinámico, ideal para carreras y paseos en carretera.",
-    "imageSrc": "casco_ruta.jpeg",
-    "price": 2800000
-  },
-  {
-    "id": 5,
-    "category": "cascos",
-    "title": "Casco de Montaña",
-    "description": "Un casco robusto y seguro para protegerte en terrenos accidentados y senderos de montaña.",
-    "imageSrc": "casco_montana.jpeg",
-    "price": 300000
-  }
-]
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "bicicletas",
+      "title": "Bicicleta de Ruta",
+      "description": "Una bicicleta de ruta es diseñada para carreras de carretera y es más adecuada para pavimentos y superficies lisas.",
+      "imageSrc": "ruta.jpg",
+      "price": 3000000
+    },
+    {
+      "id": 2,
+      "category": "bicicletas",
+      "title": "Bicicleta de Montaña",
+      "description": "Una bicicleta de montaña es ideal para terrenos accidentados y senderos fuera de carretera.",
+      "imageSrc": "mtb.jpg",
+      "price": 2700000
+    },
+    {
+      "id": 3,
+      "category": "bicicletas",
+      "title": "Bicicleta de Piñón Fijo",
+      "description": "Una bicicleta de piñón fijo tiene una única relación de transmisión y no dispone de rueda libre.",
+      "imageSrc": "fija.jpg",
+      "price": 2500000
+    },
+    {
+      "id": 4,
+      "category": "cascos",
+      "title": "Casco de Ruta",
+      "description": "Un casco de ruta ligero y aerodinámico, ideal para carreras y paseos en carretera.",
+      "imageSrc": "casco_ruta.jpeg",
+      "price": 2800000
+    },
+    {
+      "id": 5,
+      "category": "cascos",
+      "title": "Casco de Montaña",
+      "description": "Un casco robusto y seguro para protegerte en terrenos accidentados y senderos de montaña.",
+      "imageSrc": "casco_montana.jpeg",
+      "price": 300000
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "title": "Promoción Bicicletas de Ruta",
+      "description": "¡Llévate una bicicleta de ruta y un casco con descuento!",
+      "productIds": [1, 4],
+      "price": 3200000 
+    },
+    {
+      "id": 2,
+      "title": "Promoción Cascos de Montaña",
+      "description": "¡Compra un casco de montaña y obtén un descuento en guantes!",
+      "productIds": [5],
+      "price": 300000
+    }
+  ]
+}  
