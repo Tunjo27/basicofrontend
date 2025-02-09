@@ -11,7 +11,18 @@ import './Cart.css'; // Importa los estilos CSS asociados
  * @param {Object} props Propiedades del componente.
  * @returns {JSX.Element} Elemento JSX que representa el carrito de compras.
  */
-const Cart = ({ cart, onRemoveFromCart, onClearCart }) => {
+const Cart = ({ cart, onRemoveFromCart, onClearCart, onUpdateCart }) => {
+  
+  const handleIncrementQuantity = (item) => { // Cambia el nombre a handleIncrementQuantity para evitar confusiones
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id && cartItem.type === item.type);
+
+    if (existingItemIndex > -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingItemIndex].quantity += 1;
+        onUpdateCart(updatedCart); // Llama a la función onUpdateCart que se recibió como prop
+    }
+  };
+
   const total = cart.reduce((acc, item) => {
     const price = item.type === 'promotion' ?
         item.promotionPrice * item.quantity :
@@ -62,6 +73,7 @@ const Cart = ({ cart, onRemoveFromCart, onClearCart }) => {
               <h2>{item.title}</h2>
               <p>Precio: {(item.type === 'promotion' ? item.promotionPrice * item.quantity : item.price * item.quantity).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
               <p>Cantidad: {item.quantity}</p>
+              <button onClick={() => handleIncrementQuantity(item)}>Aumentar Cantidad</button>
               <button onClick={() => onRemoveFromCart(item.id)}>Eliminar</button>
             </div>
           </li>

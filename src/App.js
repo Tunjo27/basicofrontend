@@ -22,7 +22,7 @@ const App = () => {
   // Estado para manejar la visibilidad del footer
   const [isFooterVisible] = useState(true);
   // Estado para manejar los productos del carrito
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
+  const [cart, setCart] = useState([]);
   // Estado para manejar la apertura del modal de login
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -49,39 +49,32 @@ const App = () => {
    * @param {Object} product - El producto a añadir al carrito.
    */
   const handleAddToCart = (item) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find(cartItem => cartItem.id === item.id && cartItem.isPromotion === item.isPromotion);
-      if (existingProduct) {
-        return prevCart.map(cartItem =>
-          cartItem.id === item.id && cartItem.isPromotion === item.isPromotion ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
-        );
-      } else {
-        return [...prevCart, { ...item, quantity: 1 }];
-      }
-    });
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id && cartItem.type === item.type);
+
+    if (existingItemIndex > -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingItemIndex].quantity += 1;
+        setCart(updatedCart);
+    } else {
+        setCart([...cart, item]);
+    }
   };
 
   /**
    * Función para remover un producto del carrito.
    * @param {number} id - El id del producto a remover.
    */
-  const handleRemoveFromCart = (id) => {
-    setCart(prevCart => {
-        const itemToRemove = prevCart.find(item => item.id === id);
+  const handleRemoveFromCart = (itemId) => {
+    setCart(cart.filter(item => item.id !== itemId));
+  };
 
-        if (itemToRemove) {
-            if (itemToRemove.quantity > 1) {
-                return prevCart.map(item =>
-                    item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-                );
-            } else {
-                return prevCart.filter(item => item.id !== id);
-            }
-        } else {
-            return prevCart;
-        }
-    });
-};
+  const handleClearCart = () => {
+    setCart([]);
+  };
+
+  const handleUpdateCart = (updatedCart) => {
+    setCart(updatedCart);
+  }
 
   return (
     <Router>
@@ -92,8 +85,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Products" element={<Products onAddToCart={handleAddToCart} />} />
         <Route path="/Promotions" element={<Promotions onAddToCart={handleAddToCart} />} />
-        <Route path="/Cart" element={<Cart cart={cart} onRemoveFromCart={handleRemoveFromCart} onClearCart={() => setCart([])} />} />
-        {/*<Route path="/ManagementProducts" element={<Login onLogin={handleLogin} />} />*/}
+        <Route path="/Cart" element={<Cart cart={cart} onRemoveFromCart={handleRemoveFromCart} onClearCart={handleClearCart} onUpdateCart={handleUpdateCart} />} />
         <Route path="/ManagementProducts" element={<ProductManagement />} />
         <Route path="/ManagementPromotions" element={<PromotionsManagement />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />
