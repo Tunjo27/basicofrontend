@@ -12,8 +12,12 @@ import './Cart.css'; // Importa los estilos CSS asociados
  * @returns {JSX.Element} Elemento JSX que representa el carrito de compras.
  */
 const Cart = ({ cart, onRemoveFromCart, onClearCart }) => {
-  // Calcula el total del carrito sumando los precios por la cantidad de cada elemento
-  const total = cart.reduce((acc, item) => acc + (item.price || 0) * item.quantity, 0);
+  const total = cart.reduce((acc, item) => {
+    const price = item.type === 'promotion' ?
+        item.promotionPrice * item.quantity :
+        item.price * item.quantity;
+    return acc + price;
+  }, 0);
 
   // Formatea el total con separadores de miles
   const formattedTotal = total.toLocaleString('es-CO', {
@@ -25,7 +29,7 @@ const Cart = ({ cart, onRemoveFromCart, onClearCart }) => {
     const mensaje = `¡Hola! Quiero hacer el siguiente pedido:\n\n${cart
         .map(
             (producto) =>
-                `- ${producto.title} x ${producto.quantity} - ${producto.price.toLocaleString(
+                `- ${producto.title} x ${producto.quantity} - ${(producto.promotionPrice || producto.price).toLocaleString(
                     'es-CO',
                     {
                         style: 'currency',
@@ -53,26 +57,10 @@ const Cart = ({ cart, onRemoveFromCart, onClearCart }) => {
         {/* Mapea los elementos del carrito y renderiza cada uno */}
         {cart.map((item) => (
           <li key={item.id} className="cart-product">
-            {item.isPromotion ? (
-                  // Renderiza la imagen del primer producto de la promoción si existe
-                  item.products && item.products.length > 0 ? (
-                      <img src={process.env.PUBLIC_URL + '/images/' + item.products[0].imageSrc} alt={item.products[0].title || "Promoción"} />
-                  ) : (
-                      // Imagen placeholder o mensaje si no hay imagen en la promoción
-                      <img src={process.env.PUBLIC_URL + '/images/placeholder.png'} alt="Imagen no disponible" />
-                  )
-              ) : (
-                  // Renderiza la imagen del producto individual si existe
-                  item.imageSrc ? (
-                      <img src={process.env.PUBLIC_URL + '/images/' + item.imageSrc} alt={item.title || "Producto"} />
-                  ) : (
-                      // Imagen placeholder o mensaje si no hay imagen en el producto
-                      <img src={process.env.PUBLIC_URL + '/images/placeholder.png'} alt="Imagen no disponible" />
-                  )
-              )}              
+            <img src={process.env.PUBLIC_URL + '/images/' + item.imageSrc} alt={item.title} />
             <div className="cart-product-details">
               <h2>{item.title}</h2>
-              <p>Precio: {(item.price * item.quantity).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
+              <p>Precio: {(item.type === 'promotion' ? item.promotionPrice * item.quantity : item.price * item.quantity).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
               <p>Cantidad: {item.quantity}</p>
               <button onClick={() => onRemoveFromCart(item.id)}>Eliminar</button>
             </div>

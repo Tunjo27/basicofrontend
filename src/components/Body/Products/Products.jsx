@@ -15,13 +15,15 @@ const Products = ({ onAddToCart }) => {
   const [selectedProductId, setSelectedProductId] = useState(null);
 
   useEffect(() => {
-    // Obtener los productos desde localStorage
     const storedProducts = JSON.parse(localStorage.getItem('products'));
 
     if (storedProducts) {
-      setFilteredProducts(storedProducts);
+        setFilteredProducts(storedProducts);
+    } else if (database && database.products) { // Verifica que database y database.products existan
+        setFilteredProducts(database.products); // Usa database.products si storedProducts no existe
     } else {
-      setFilteredProducts(database); // Usar database como respaldo
+        console.error("No se encontraron productos en la base de datos ni en localStorage.");
+        setFilteredProducts([]); // Inicializa con un array vacío para evitar el error
     }
   }, []);
 
@@ -29,15 +31,14 @@ const Products = ({ onAddToCart }) => {
   const handleSearch = (event) => {
     const term = event.target.value;
     setSearchTerm(term);
-    
+
     if (term.trim() !== "") {
-      const filtered = filteredProducts.filter(product =>
-        product.title.toLowerCase().includes(term.toLowerCase())
-      );
-      setFilteredProducts(filtered);
+        const filtered = (JSON.parse(localStorage.getItem('products')) || database.products || []).filter(product =>
+            product.title.toLowerCase().includes(term.toLowerCase())
+        );
+        setFilteredProducts(filtered);
     } else {
-      // Si el término de búsqueda está vacío, muestra todos los productos
-      setFilteredProducts(JSON.parse(localStorage.getItem('products')) || database);
+        setFilteredProducts(JSON.parse(localStorage.getItem('products')) || database.products || []); // Corrección aquí
     }
   };
 
@@ -50,7 +51,14 @@ const Products = ({ onAddToCart }) => {
     // Función para agregar el artículo al carrito
     const handleAddToCart = () => {
       if (product && typeof product.price === 'number') {
-        onAddToCart(product);
+        onAddToCart({ // Estructura consistente para productos individuales
+            id: product.id, // ID del producto
+            type: 'product', // Tipo de ítem: producto
+            title: product.title,
+            imageSrc: product.imageSrc,
+            price: product.price,
+            quantity: 1
+        });
       } else {
         console.error('El precio del producto no está definido o no es un número.');
       }
@@ -99,7 +107,10 @@ const Products = ({ onAddToCart }) => {
           value={searchTerm}
           onChange={handleSearch}
         />
-        <button onClick={() => { setSearchTerm(""); setFilteredProducts(JSON.parse(localStorage.getItem('products')) || database); }}>x</button>
+        <button onClick={() => {
+          setSearchTerm("");
+          setFilteredProducts(JSON.parse(localStorage.getItem('products')) || database.products || []); // Corrección aquí
+        }}>x</button>
       </div>
       {/* Renderizado condicional: detalles o lista */}
       {selectedProductId ? ( // Si hay un producto seleccionado, muestra los detalles

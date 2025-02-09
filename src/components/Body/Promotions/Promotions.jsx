@@ -34,29 +34,29 @@ function Promotions({ onAddToCart }) {
         setSelectedPromotion(promotion);
     };
 
-    const handleAddToCart = (promotion) => {
-        let promotionTotal = 0;
-        const productsToAdd = []; // Array para almacenar los productos de la promoción
-    
-        promotion.productIds.forEach(productId => {
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                promotionTotal += product.price;
-                productsToAdd.push(product); // Agregar el producto al array
-            }
-        });
-    
-        // Agregar la promoción como un elemento individual en el carrito
-        const promotionItem = {
-            id: promotion.id,
-            title: promotion.title,
-            price: promotionTotal,
-            quantity: 1,
-            isPromotion: true,
-            products: productsToAdd // Almacenar los productos de la promoción
-        };
-    
-        onAddToCart(promotionItem);
+    const handleAddPromotionToCart = (promotion) => {
+        if (promotion && promotion.productIds && promotion.price) {
+            const productsToAdd = promotion.productIds.map(productId => {
+                const product = products.find(p => p.id === productId);
+                return product ? {
+                    ...product,
+                    promotionPrice: promotion.price,
+                    quantity: 1
+                } : null;
+            }).filter(product => product !== null);
+
+            onAddToCart({
+                id: promotion.id, // ID de la promoción
+                type: 'promotion', // Tipo de ítem: promoción
+                title: promotion.title,
+                imageSrc: productsToAdd[0].imageSrc, // Imagen del primer producto de la promoción
+                products: productsToAdd,
+                promotionPrice: promotion.price,
+                quantity: 1 // Cantidad inicial de la promoción
+            });
+        } else {
+            console.error("Promoción no definida o datos incompletos.");
+        }
     };
 
     return (
@@ -89,7 +89,7 @@ function Promotions({ onAddToCart }) {
                             ) : null;
                         })}
                     </div>
-                    <button className="buy-button" onClick={() => handleAddToCart(selectedPromotion)}>Agregar promoción al carrito</button>
+                    <button className="buy-button" onClick={() => handleAddPromotionToCart(selectedPromotion)}>Agregar promoción al carrito</button>
                     <button className="back-button" onClick={() => setSelectedPromotion(null)}>Volver a las promociones</button>
                 </div>
             ) : (
