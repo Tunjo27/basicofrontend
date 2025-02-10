@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductManagement.css';
 import database from '../../../database.json';
 
@@ -7,15 +7,22 @@ function ProductManagement() {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState(null);
-  const [products, setProducts] = useState(JSON.parse(localStorage.getItem('products')) || database); // Estado para los productos
+  //const [products, setProducts] = useState(JSON.parse(localStorage.getItem('products')) || database); // Estado para los productos
   const [productToEdit, setProductToEdit] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  const [products, setProducts] = useState(() => {
+    const storedProducts = JSON.parse(localStorage.getItem('products'));
+    return storedProducts || database.products || []; // Valor inicial: localStorage o database.products o array vacío
+  });
+
+  useEffect(() => {
+    localStorage.setItem('products', JSON.stringify(products));
+  }, [products]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const storedProducts = JSON.parse(localStorage.getItem('products')) || database; // Usar database como respaldo
-  
     const newProduct = {
       id: Date.now(),
       category: 'varios',
@@ -25,12 +32,7 @@ function ProductManagement() {
       price: parseFloat(price),
     };
 
-    storedProducts.push(newProduct);
-
-    // Guardar la copia actualizada en localStorage
-    localStorage.setItem('products', JSON.stringify(storedProducts));
-    
-    setProducts(storedProducts); // Actualiza el estado products para re-renderizar la lista
+    setProducts([...products, newProduct]);
 
     setTitle('');
     setDescription('');

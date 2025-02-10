@@ -13,6 +13,22 @@ import './Cart.css'; // Importa los estilos CSS asociados
  */
 const Cart = ({ cart, onRemoveFromCart, onClearCart, onUpdateCart }) => {
   
+  const handleRemoveItem = (itemToRemove) => {
+    const updatedCart = cart.map(item => {
+        if (item.id === itemToRemove.id && item.type === itemToRemove.type) {
+            const newItem = { ...item }; // Crea una copia para no modificar el original
+            newItem.quantity -= 1; // Decrementa la cantidad
+            if (newItem.quantity === 0) {
+                return null; // Si la cantidad llega a 0, elimina el elemento
+            }
+            return newItem;
+        }
+        return item;
+    }).filter(item => item !== null); // Filtra los elementos null (eliminados)
+
+    onUpdateCart(updatedCart); // Llama a la función onUpdateCart con el carrito actualizado
+  };
+  
   const handleIncrementQuantity = (item) => { // Cambia el nombre a handleIncrementQuantity para evitar confusiones
     const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id && cartItem.type === item.type);
 
@@ -67,14 +83,14 @@ const Cart = ({ cart, onRemoveFromCart, onClearCart, onUpdateCart }) => {
       <ul>
         {/* Mapea los elementos del carrito y renderiza cada uno */}
         {cart.map((item) => (
-          <li key={item.id} className="cart-product">
+          <li key={`${item.id}-${item.type}`} className="cart-product">
             <img src={process.env.PUBLIC_URL + '/images/' + item.imageSrc} alt={item.title} />
             <div className="cart-product-details">
               <h2>{item.title}</h2>
               <p>Precio: {(item.type === 'promotion' ? item.promotionPrice * item.quantity : item.price * item.quantity).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
               <p>Cantidad: {item.quantity}</p>
               <button onClick={() => handleIncrementQuantity(item)}>Aumentar Cantidad</button>
-              <button onClick={() => onRemoveFromCart(item.id)}>Eliminar</button>
+              <button onClick={() => handleRemoveItem(item)}>Eliminar</button>
             </div>
           </li>
         ))}
