@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import database from '../../../database.json'; // Importa tu base de datos
 import './Promotions.css';
 
-function Promotions({ onAddToCart }) {
+const Promotions = ({ onAddToCart }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredPromotions, setFilteredPromotions] = useState(database.promotions || []); // Usa la parte de promociones de tu base de datos
     const [selectedPromotion, setSelectedPromotion] = useState(null);
@@ -74,7 +74,6 @@ function Promotions({ onAddToCart }) {
             {selectedPromotion ? (
                 <div className="promotion-details">
                     <h2>{selectedPromotion.title}</h2>
-                    <p>{selectedPromotion.description}</p>
                     <h3>Productos en esta promoción:</h3>
                     <div className="product-list">
                         {selectedPromotion.productIds.map(productId => {
@@ -83,8 +82,6 @@ function Promotions({ onAddToCart }) {
                                 <div key={product.id} className="product">
                                     <img src={process.env.PUBLIC_URL + '/images/' + product.imageSrc} alt={product.title} />
                                     <h4>{product.title}</h4>
-                                    <p>{product.description}</p>
-                                    <p>Precio: {product.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
                                 </div>
                             ) : null;
                         })}
@@ -96,8 +93,6 @@ function Promotions({ onAddToCart }) {
                 <div className="promotions-list">
                     {filteredPromotions.map(promotion => (
                         <div key={promotion.id} className="promotion" onClick={() => handleItemClick(promotion)}>
-                            <h2>{promotion.title}</h2>
-                            <p>{promotion.description}</p>
                             <div className="product-images">
                                 {promotion.productIds.map(productId => {
                                     const product = products.find(p => p.id === productId);
@@ -110,6 +105,8 @@ function Promotions({ onAddToCart }) {
                                     ) : null;
                                 })}
                             </div>
+                            <h2>{promotion.title}</h2>
+                            <p>{promotion.description}</p>
                         </div>
                     ))}
                 </div>
