@@ -11,7 +11,7 @@ import './Home.css';
  */
 const Home = ({ user }) => {
   const images = [
-    process.env.PUBLIC_URL + '/images/image1.jpg',
+    process.env.PUBLIC_URL + '/images/image1.png',
     process.env.PUBLIC_URL + '/images/image2.jpg'
   ];
   const [currentImage, setCurrentImage] = useState(0);
@@ -33,8 +33,8 @@ const Home = ({ user }) => {
       </div>
       <h1>Quiénes somos</h1>
       <hr className="line-divider"/>
-      <p>Somos una empresa apasionada por el ciclismo y la aventura al aire libre. Nos dedicamos a la fabricación y venta de bicicletas de alta calidad para todos los amantes de la vida en dos ruedas. Nuestra misión es inspirar a las personas a explorar el mundo sobre dos ruedas, brindando bicicletas diseñadas para la máxima comodidad, rendimiento y durabilidad.</p>
-      <p>Ofrecemos una amplia gama de bicicletas para satisfacer las necesidades de cada ciclista. Desde bicicletas de ruta aerodinámicas para los que buscan la máxima velocidad en el asfalto, hasta robustas bicicletas de montaña para aquellos que buscan conquistar senderos y montañas. También tenemos bicicletas urbanas y de paseo, perfectas para desplazarse por la ciudad o disfrutar de relajantes paseos en el parque.</p>
+      <p>Somos una empresa familiar apasionada por la belleza y el bienestar. Nos dedicamos a ofrecer productos cosméticos y prendas de vestir de alta calidad, diseñados para realzar la belleza natural de cada persona y brindar comodidad y estilo en cada etapa de la vida. Nuestra misión es empoderar a nuestros clientes, brindándoles productos que no solo los hagan sentir bien por fuera, sino también por dentro. Creemos en la belleza auténtica, la confianza en uno mismo y el cuidado personal.</p>
+      <p>Ofrecemos una amplia gama de productos para satisfacer las necesidades de cada persona. En nuestra empresa, cada cliente es parte de nuestra familia. Nos esforzamos por brindar un servicio excepcional, atención personalizada y productos que superen las expectativas.</p>
     </div>
   );
 };

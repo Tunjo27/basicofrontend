@@ -3,58 +3,66 @@
     {
       "id": 1,
       "category": "bicicletas",
-      "title": "Bicicleta de Ruta",
-      "description": "Una bicicleta de ruta es diseñada para carreras de carretera y es más adecuada para pavimentos y superficies lisas.",
-      "imageSrc": "ruta.jpg",
-      "price": 3000000
+      "title": "Locion It's you",
+      "description": "Locion unisex you 50 ml esika.",
+      "imageSrc": "itsyou.jpg",
+      "price": 50000
     },
     {
       "id": 2,
       "category": "bicicletas",
-      "title": "Bicicleta de Montaña",
-      "description": "Una bicicleta de montaña es ideal para terrenos accidentados y senderos fuera de carretera.",
-      "imageSrc": "mtb.jpg",
-      "price": 2700000
+      "title": "Locion Xolo",
+      "description": "Locion masculina xolo yanbal.",
+      "imageSrc": "xolo.jpg",
+      "price": 130000
     },
     {
       "id": 3,
       "category": "bicicletas",
-      "title": "Bicicleta de Piñón Fijo",
-      "description": "Una bicicleta de piñón fijo tiene una única relación de transmisión y no dispone de rueda libre.",
-      "imageSrc": "fija.jpg",
-      "price": 2500000
+      "title": "Perfume Temptation",
+      "description": "Perfume femenino temptation yanbal.",
+      "imageSrc": "temptation.jpeg",
+      "price": 150000
     },
     {
       "id": 4,
       "category": "cascos",
-      "title": "Casco de Ruta",
-      "description": "Un casco de ruta ligero y aerodinámico, ideal para carreras y paseos en carretera.",
-      "imageSrc": "casco_ruta.jpeg",
-      "price": 2800000
+      "title": "Locion Salvaje",
+      "description": "Locion masculina salvaje esika.",
+      "imageSrc": "salvaje.png",
+      "price": 60000
     },
     {
       "id": 5,
       "category": "cascos",
-      "title": "Casco de Montaña",
-      "description": "Un casco robusto y seguro para protegerte en terrenos accidentados y senderos de montaña.",
-      "imageSrc": "casco_montana.jpeg",
-      "price": 300000
+      "title": "Perfume Iluminas",
+      "description": "Perfume femenino iluminas yanbal.",
+      "imageSrc": "iluminas.png",
+      "price": 70000
+    },
+    {
+      "id": 6,
+      "category": "cascos",
+      "title": "Pijama",
+      "description": "Pijama de algodon para mujer.",
+      "imageSrc": "pijama.jpeg",
+      "price": 40000
     }
   ],
   "promotions": [
     {
       "id": 1,
-      "title": "Promoción Bicicletas de Ruta",
-      "description": "¡Llévate una bicicleta de ruta y un casco con descuento!",
-      "productIds": [1, 4],
-      "price": 3200000 
+      "title": "Promoción Its you",
+      "description": "¡Llévate en combo la locion y el desodorante!",
+      "productIds": [1],
+      "price": 80000 
     },
     {
       "id": 2,
-      "title": "Promoción Cascos de Montaña",
-      "description": "¡Compra un casco de montaña y obtén un descuento en guantes!",
-      "productIds": [5],
-      "price": 300000
+      "title": "Promoción pijama e iluminas",
+      "description": "¡LLevate la colonia y una pijama!",
+      "productIds": [5, 6],
+      "price": 110000
     }
   ]
 }  
